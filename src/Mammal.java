@@ -1,47 +1,52 @@
 // Arthur Moreira Correa NUSP: 13749952
 
 public abstract class Mammal implements Ecology,Animal {
-    // Implement the eat() method within Mammal to print out "Eats like a mammal."
     private String name;
-    private String habitat;
+    private String habitat; // In this case, habitat don`t need to be used, but it is a good practice to have it, in case it is needed in the future.
     private String specie;
 
-    public Mammal(String nameIn,String habitatIn){
+    // Constructor that initializes the name, habitat and specie of the animal.
+    public Mammal(String nameIn,String habitatIn, String specieIn){
         name = nameIn;
         habitat = habitatIn;
-        specie = "Mammal";
+        specie = specieIn;
     }
 
+    // Abstract methods that be implemented by the subclasses.
     public abstract void sound();
     public abstract String getHabitat();
+
+    // Returns out the animal name.
     public String getName(){
         return name;
-    } // Returns out the animal name.
+    }
+    // Returns out the species name
     public String getSpecies(){
         return specie;
-    } // Returns out the species name
+    }
+    // Prints out an eating action.
     public void eat(){
         System.out.println("Eats like a mammal.");
-    } // Prints out an eating action.
+    }
 
-
-    public static Mammal get(String nameIn){
-        nameIn = nameIn.toLowerCase();
-        if(nameIn.equals("lion")){
-            return new Lion("Lion");
-        }else if(nameIn.equals("elephant")) {
-            return new Elephant("Elephant");
+    // Factory method that returns a new animal object based on the specie, with the name given, if the specie is not valid, it prints out an error message, and returns null.
+    public static Animal get(String nameIn, String specieIn){
+        specieIn = specieIn.toLowerCase();
+        if(specieIn.equals("lion")){
+            return new Lion(nameIn);
+        }else if(specieIn.equals("elephant")) {
+            return new Elephant(nameIn);
         }
-        System.out.println("Invalid animal name: " + nameIn);
+        System.out.println("Invalid animal specie: " + specieIn);
         return null;
     }
 
-
 }
 
+// Subclasses of Mammal, that implements the abstract methods.
 class Elephant extends Mammal{
     public Elephant(String nameIn){
-        super(nameIn,"Savana");
+        super(nameIn,"Savannah", "Elephant");
     }
     public void sound(){
         System.out.println("Trumpets");
@@ -52,15 +57,16 @@ class Elephant extends Mammal{
 
 }
 
+// Subclasses of Mammal, that implements the abstract methods.
 class Lion extends Mammal{
     public Lion(String nameIn){
-        super(nameIn,"Savana");
+        super(nameIn,"Grassland", "Lion");
     }
     public void sound(){
         System.out.println("Roars");
     }
     public String getHabitat(){
-        return "Savana";
+        return "Grassland";
     }
 }
 
