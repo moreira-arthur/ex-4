@@ -2,13 +2,11 @@
 
 public abstract class Mammal implements Ecology,Animal {
     private String name;
-    private String habitat; // In this case, habitat don`t need to be used, but it is a good practice to have it, in case it is needed in the future.
     private String specie;
 
     // Constructor that initializes the name, habitat and specie of the animal.
-    public Mammal(String nameIn,String habitatIn, String specieIn){
+    public Mammal(String nameIn, String specieIn){
         name = nameIn;
-        habitat = habitatIn;
         specie = specieIn;
     }
 
@@ -46,13 +44,13 @@ public abstract class Mammal implements Ecology,Animal {
 // Subclasses of Mammal, that implements the abstract methods.
 class Elephant extends Mammal{
     public Elephant(String nameIn){
-        super(nameIn,"Savannah", "Elephant");
+        super(nameIn,"Elephant");
     }
     public void sound(){
         System.out.println("Trumpets");
     }
     public String getHabitat(){
-        return "Savana";
+        return "Savannah";
     }
 
 }
@@ -60,7 +58,7 @@ class Elephant extends Mammal{
 // Subclasses of Mammal, that implements the abstract methods.
 class Lion extends Mammal{
     public Lion(String nameIn){
-        super(nameIn,"Grassland", "Lion");
+        super(nameIn, "Lion");
     }
     public void sound(){
         System.out.println("Roars");
