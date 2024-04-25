@@ -39,9 +39,5 @@ public class Main {
         }catch(NullPointerException e){
             System.out.println("Rex can't be created, because Dog is not a valid specie.");
         }
-
-
-
-    
     }
 }
